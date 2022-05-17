@@ -11,21 +11,26 @@ struct CollectionViewCell: View {
     static let coulmn = 4
     static let row = 12
     let width = (UIScreen.main.bounds.width/4) - 10
-    let index = 0
+    var index = 0
+    init(row: Int, column: Int) {
+        index = row + column + (row*2)
+    }
     var body: some View {
         ZStack {
             Rectangle()
                 .frame(width: width, height: width)
                 .foregroundColor(Color.gray)
-            Text("1")
+            Text("\(index)")
                 .font(.largeTitle)
                 .foregroundColor(.white)
+        }.onTapGesture {
+            print("\(index)")
         }
     }
 }
 
 struct CollectionViewCell_Previews: PreviewProvider {
     static var previews: some View {
-        CollectionViewCell()
+        CollectionViewCell(row:0, column: 1)
     }
 }
