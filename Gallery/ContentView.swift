@@ -9,8 +9,19 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        ScrollView(.vertical, showsIndicators: false){   ForEach(0..<CollectionViewCell.row) { i in
+            HStack {
+                ForEach(0..<CollectionViewCell.coulmn){ j in
+                    CollectionViewCell().onTapGesture {
+                        let index = i+j+(i*2)
+                        print("\(index)")
+                    }
+                }
+            }
+        }
+            
+        }
+        
     }
 }
 
